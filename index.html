@@ -4,81 +4,124 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lucas Milcamps — CRM Functional Analyst</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --ink: #1a1a2e; --mid: #4a4a6a; --soft: #8888aa;
-    --accent: #2d6cdf; --accent-light: #e8f0fd;
-    --rule: #e0e0ee; --bg: #fafafa; --white: #ffffff;
+    --ink: #1a1a2e;
+    --mid: #4a4a6a;
+    --soft: #9999bb;
+    --accent: #4a90e2;
+    --accent-bright: #6ab0ff;
+    --accent-light: #e8f0fd;
+    --rule: #e4e4f0;
+    --bg: #f0f0f5;
+    --white: #ffffff;
+    --header-bg: #1a1a2e;
   }
-  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-  .page { max-width: 900px; margin: 40px auto; background: var(--white); box-shadow: 0 4px 40px rgba(0,0,0,0.08); }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 840px; margin: 36px auto; background: var(--white); box-shadow: 0 8px 48px rgba(26,26,46,0.15); overflow: hidden; }
 
   /* LANG SWITCH */
-  .lang-switch-bar { display: flex; justify-content: flex-end; padding: 12px 56px 0; gap: 4px; }
-  .lang-btn { font-family: 'Inter', sans-serif; font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; padding: 4px 12px; border-radius: 4px; border: 1.5px solid var(--rule); background: transparent; color: var(--soft); cursor: pointer; transition: all 0.15s; }
+  .lang-switch-bar { display: flex; justify-content: flex-end; align-items: center; padding: 10px 40px 0; gap: 6px; background: var(--header-bg); }
+  .lang-btn { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.2); background: transparent; color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.15s; }
   .lang-btn.active { background: var(--accent); border-color: var(--accent); color: white; }
-  .lang-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+  .lang-btn:hover:not(.active) { border-color: var(--accent-bright); color: var(--accent-bright); }
+  .lang-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.15); margin: 0 2px; }
+  .pdf-btn { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; padding: 3px 12px; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.2); background: transparent; color: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 5px; }
+  .pdf-btn:hover { border-color: #ffffff; color: #ffffff; }
+  .pdf-btn svg { width: 11px; height: 11px; fill: currentColor; }
 
-  /* HEADER */
-  .header { padding: 24px 56px 40px; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; }
-  .header-name { font-family: 'DM Serif Display', serif; font-size: 42px; letter-spacing: -0.5px; color: var(--ink); line-height: 1.1; margin-bottom: 8px; }
-  .header-title { font-size: 15px; font-weight: 500; color: var(--accent); letter-spacing: 0.02em; margin-bottom: 16px; }
-  .header-tagline { font-size: 13px; color: var(--mid); max-width: 480px; line-height: 1.7; }
-  .header-contact { text-align: right; display: flex; flex-direction: column; gap: 6px; }
-  .contact-item { font-size: 12.5px; color: var(--mid); display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
-  .contact-item a { color: var(--accent); text-decoration: none; }
-  .contact-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  /* HEADER — dark */
+  .header { background: var(--header-bg); padding: 28px 40px 32px; position: relative; overflow: hidden; }
+  .header::after { content: ''; position: absolute; right: -60px; top: -60px; width: 240px; height: 240px; border-radius: 50%; background: rgba(74,144,226,0.08); pointer-events: none; }
+  .header::before { content: ''; position: absolute; right: 40px; bottom: -40px; width: 120px; height: 120px; border-radius: 50%; background: rgba(74,144,226,0.05); pointer-events: none; }
+  .header-name { font-family: 'DM Serif Display', serif; font-size: 40px; letter-spacing: -0.5px; color: #ffffff; line-height: 1.05; margin-bottom: 6px; }
+  .header-title { font-size: 13px; font-weight: 600; color: var(--accent-bright); letter-spacing: 0.04em; margin-bottom: 18px; }
+  .header-meta { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+  .meta-item { font-size: 11.5px; color: rgba(255,255,255,0.55); display: flex; align-items: center; gap: 5px; }
+  .meta-item::before { content: ''; width: 3px; height: 3px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .meta-item a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.15s; }
+  .meta-item a:hover { color: var(--accent-bright); }
 
   /* BODY */
-  .body { display: grid; grid-template-columns: 1fr 280px; }
-  .main { padding: 40px 48px 48px 56px; border-right: 1px solid var(--rule); }
-  .sidebar { padding: 40px 36px 48px; }
+  .body { padding: 32px 40px 44px; display: flex; flex-direction: column; gap: 26px; }
 
-  /* SECTIONS */
-  .section { margin-bottom: 40px; }
-  .section:last-child { margin-bottom: 0; }
-  .section-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+  /* SECTION LABEL */
+  .section-label { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+  .section-label::before { content: ''; width: 4px; height: 16px; background: var(--accent); border-radius: 2px; flex-shrink: 0; }
+  .section-label-text { font-size: 9.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); }
 
-  /* JOBS */
-  .job { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--rule); }
-  .job:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-  .job-header { display: grid; grid-template-columns: 1fr auto; gap: 8px; margin-bottom: 4px; }
-  .job-title { font-size: 14px; font-weight: 600; color: var(--ink); }
-  .job-period { font-size: 11.5px; color: var(--soft); white-space: nowrap; padding-top: 2px; }
-  .job-company { font-size: 12.5px; color: var(--accent); font-weight: 500; margin-bottom: 10px; }
-  .job-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-  .job-bullets li { font-size: 12.5px; color: var(--mid); padding-left: 14px; position: relative; line-height: 1.6; }
-  .job-bullets li::before { content: ''; position: absolute; left: 0; top: 8px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
-  .mission { margin-top: 16px; padding-top: 14px; padding-left: 14px; border-left: 2px solid var(--accent-light); }
-  .mission-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-  .mission-client { font-size: 12.5px; font-weight: 600; color: var(--accent); }
-  .job-tag { display: inline-block; margin-top: 8px; font-size: 10.5px; font-weight: 500; color: var(--accent); background: var(--accent-light); padding: 2px 8px; border-radius: 3px; }
+  /* SUMMARY */
+  .summary-para { font-size: 12.5px; color: var(--mid); line-height: 1.78; margin-bottom: 12px; }
+  .summary-bullets { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; }
+  .summary-bullets li { font-size: 12px; color: var(--mid); padding-left: 13px; position: relative; line-height: 1.55; }
+  .summary-bullets li::before { content: ''; position: absolute; left: 0; top: 7px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
 
-  /* SIDEBAR */
-  .sidebar-section { margin-bottom: 32px; }
-  .sidebar-section:last-child { margin-bottom: 0; }
-  .about-text { font-size: 13px; color: var(--mid); line-height: 1.75; }
-  .about-text p + p { margin-top: 12px; }
-  .skill-group { margin-bottom: 16px; }
-  .skill-group-name { font-size: 11px; font-weight: 600; color: var(--ink); margin-bottom: 6px; letter-spacing: 0.02em; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-  .skill-tag { font-size: 11px; color: var(--mid); background: #f2f2f8; padding: 3px 8px; border-radius: 3px; }
-  .skill-tag.primary { color: var(--accent); background: var(--accent-light); font-weight: 500; }
-  .edu-item { margin-bottom: 16px; }
-  .edu-item:last-child { margin-bottom: 0; }
-  .edu-degree { font-size: 12.5px; font-weight: 600; color: var(--ink); line-height: 1.4; }
-  .edu-school { font-size: 12px; color: var(--accent); font-weight: 500; margin-top: 1px; }
-  .edu-period { font-size: 11px; color: var(--soft); margin-top: 2px; }
-  .edu-detail { font-size: 11.5px; color: var(--mid); margin-top: 3px; }
-  .cert-item { margin-bottom: 12px; padding-left: 10px; border-left: 2px solid var(--accent); }
-  .cert-item:last-child { margin-bottom: 0; }
-  .cert-name { font-size: 12px; font-weight: 600; color: var(--ink); line-height: 1.4; }
-  .cert-meta { font-size: 11px; color: var(--soft); margin-top: 1px; }
-  .lang-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-  .lang-name { font-size: 12.5px; color: var(--ink); font-weight: 500; }
-  .lang-level { font-size: 11px; color: var(--soft); }
+  /* SKILLS */
+  .skills-grid { display: flex; flex-direction: column; gap: 10px; }
+  .skill-row { display: flex; gap: 12px; align-items: flex-start; }
+  .skill-category { font-size: 10.5px; font-weight: 700; color: var(--ink); min-width: 110px; flex-shrink: 0; padding-top: 3px; letter-spacing: 0.02em; }
+  .skill-pills { display: flex; flex-wrap: wrap; gap: 5px; }
+  .pill { font-size: 11px; color: var(--mid); background: #f2f2f8; border: 1px solid var(--rule); padding: 2px 9px; border-radius: 20px; white-space: nowrap; }
+  .pill.primary { color: var(--accent); background: var(--accent-light); border-color: rgba(74,144,226,0.25); font-weight: 500; }
+
+  /* EXPERIENCE */
+  .job { margin-bottom: 22px; }
+  .job:last-child { margin-bottom: 0; }
+  .job-header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 1px; }
+  .job-title { font-size: 13px; font-weight: 700; color: var(--ink); }
+  .job-period { font-size: 11px; color: var(--soft); white-space: nowrap; }
+  .job-company { font-size: 11.5px; color: var(--accent); font-weight: 600; margin-bottom: 7px; letter-spacing: 0.01em; }
+  .job-scope { font-size: 12px; color: var(--mid); line-height: 1.72; margin-bottom: 9px; border-left: 3px solid var(--rule); padding-left: 10px; font-style: italic; }
+  .job-bullets { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .job-bullets li { font-size: 12px; color: var(--mid); padding-left: 14px; position: relative; line-height: 1.62; }
+  .job-bullets li::before { content: ''; position: absolute; left: 0; top: 7px; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+  .job-bullets li strong { color: var(--ink); font-weight: 600; }
+
+  /* MISSION */
+  .mission { margin-top: 13px; padding-left: 14px; border-left: 2px solid var(--accent-light); }
+  .mission-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .mission-client { font-size: 12px; font-weight: 700; color: var(--ink); }
+  .mission-scope { font-size: 11.5px; color: var(--mid); line-height: 1.65; margin-bottom: 7px; font-style: italic; }
+
+  /* DIVIDER */
+  .job-divider { border: none; border-top: 1px dashed var(--rule); margin: 18px 0; }
+
+  /* ADDITIONAL */
+  .addl-list { display: flex; flex-direction: column; gap: 7px; }
+  .addl-item { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .addl-left { font-size: 12px; color: var(--mid); }
+  .addl-title { font-weight: 600; color: var(--ink); }
+  .addl-period { font-size: 11px; color: var(--soft); white-space: nowrap; flex-shrink: 0; }
+
+  /* TWO-COL BOTTOM */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+  /* CERTS */
+  .cert-list { display: flex; flex-direction: column; gap: 8px; }
+  .cert-item { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .cert-left { display: flex; align-items: center; gap: 6px; }
+  .cert-name { font-size: 12px; font-weight: 600; color: var(--ink); }
+  .cert-badge { font-size: 9.5px; font-weight: 700; color: var(--accent); background: var(--accent-light); border: 1px solid rgba(74,144,226,0.25); padding: 1px 6px; border-radius: 3px; letter-spacing: 0.04em; }
+  .cert-meta { font-size: 11px; color: var(--soft); white-space: nowrap; }
+  .cert-inprogress { font-size: 10px; font-weight: 600; color: #e8a020; background: #fef6e4; border: 1px solid #f5d78e; padding: 1px 6px; border-radius: 3px; }
+
+  /* EDUCATION */
+  .edu-list { display: flex; flex-direction: column; gap: 10px; }
+  .edu-item {}
+  .edu-degree { font-size: 12px; font-weight: 600; color: var(--ink); line-height: 1.4; }
+  .edu-school { font-size: 11.5px; color: var(--mid); }
+  .edu-period { font-size: 11px; color: var(--soft); }
+
+  /* LANG */
+  .lang-list { display: flex; flex-direction: column; gap: 6px; }
+  .lang-item { display: flex; align-items: center; justify-content: space-between; }
+  .lang-name { font-size: 12px; font-weight: 600; color: var(--ink); }
+  .lang-dots { display: flex; gap: 3px; }
+  .lang-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rule); }
+  .lang-dot.filled { background: var(--accent); }
+  .lang-label { font-size: 11px; color: var(--soft); min-width: 80px; text-align: right; }
 
   /* I18N */
   [data-en], [data-fr] { display: none; }
@@ -87,15 +130,20 @@
   span[data-en], span[data-fr] { display: inline; }
   .lang-en span[data-fr], .lang-fr span[data-en] { display: none; }
 
-  @media print { body { background: white; } .page { box-shadow: none; margin: 0; max-width: 100%; } .lang-switch-bar { display: none; } }
-  @media (max-width: 700px) {
-    .body { grid-template-columns: 1fr; }
-    .main { border-right: none; border-bottom: 1px solid var(--rule); padding: 32px 24px; }
-    .sidebar { padding: 32px 24px; }
-    .header { grid-template-columns: 1fr; padding: 16px 24px 32px; }
-    .header-contact { text-align: left; }
-    .contact-item { justify-content: flex-start; }
-    .lang-switch-bar { padding: 12px 24px 0; }
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; margin: 0; max-width: 100%; }
+    .lang-switch-bar { display: none; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .pill.primary, .cert-badge, .cert-inprogress { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .lang-dot.filled { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+  @media (max-width: 640px) {
+    .header, .body { padding-left: 20px; padding-right: 20px; }
+    .lang-switch-bar { padding-right: 20px; }
+    .two-col { grid-template-columns: 1fr; gap: 24px; }
+    .summary-bullets { grid-template-columns: 1fr; }
+    .job-header, .addl-item { flex-wrap: wrap; }
   }
 </style>
 </head>
@@ -106,354 +154,266 @@
   <div class="lang-switch-bar">
     <button class="lang-btn active" onclick="setLang('en')">EN</button>
     <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    <div class="lang-divider"></div>
+    <button class="pdf-btn" onclick="window.print()">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+      <span data-en>Download PDF</span>
+      <span data-fr>Télécharger PDF</span>
+    </button>
   </div>
 
   <!-- HEADER -->
   <div class="header">
-    <div>
-      <div class="header-name">Lucas Milcamps</div>
-      <div class="header-title">
-        <span data-en>CRM Functional Analyst · Dynamics 365 &amp; Power Platform Specialist</span>
-        <span data-fr>Analyste Fonctionnel CRM · Spécialiste Dynamics 365 &amp; Power Platform</span>
-      </div>
-      <div class="header-tagline">
-        <span data-en>Pragmatic consultant translating complex business challenges into scalable digital solutions — with a focus on OOB-first Dynamics 365 configurations, Dataverse integrity, and intelligent process automation.</span>
-        <span data-fr>Consultant pragmatique qui transforme les défis métier complexes en solutions digitales performantes — avec un focus sur les configurations OOB-first Dynamics 365, l'intégrité Dataverse et l'automatisation intelligente des processus.</span>
-      </div>
+    <div class="header-name">Lucas Milcamps</div>
+    <div class="header-title">
+      <span data-en>CRM Functional Analyst · Dynamics 365 &amp; Power Platform</span>
+      <span data-fr>Analyste Fonctionnel CRM · Dynamics 365 &amp; Power Platform</span>
     </div>
-    <div class="header-contact">
-      <div class="contact-item"><span class="contact-dot"></span> Brussels, Belgium</div>
-      <div class="contact-item"><span class="contact-dot"></span> <a href="mailto:lucas.milcamps@gmail.com">lucas.milcamps@gmail.com</a></div>
-      <div class="contact-item"><span class="contact-dot"></span> <a href="tel:+32468458538">+32 468 45 85 38</a></div>
-      <div class="contact-item"><span class="contact-dot"></span> <a href="https://linkedin.com/in/lucas-milcamps">linkedin.com/in/lucas-milcamps</a></div>
+    <div class="header-meta">
+      <span class="meta-item">Brussels, Belgium</span>
+      <span class="meta-item"><a href="tel:+32468458538">+32 468 45 85 38</a></span>
+      <span class="meta-item"><a href="mailto:lucas.milcamps@gmail.com">lucas.milcamps@gmail.com</a></span>
+      <span class="meta-item">linkedin.com/in/lucas-milcamps</span>
     </div>
   </div>
 
-  <!-- BODY -->
   <div class="body">
-    <div class="main">
 
-      <!-- PROFILE -->
-      <div class="section">
-        <div class="section-label" data-en>Profile</div>
-        <div class="section-label" data-fr>Profil</div>
-        <div class="about-text">
-          <div data-en>
-            <p>I am a pragmatic Functional Analyst with a passion for translating complex business challenges into high-performing digital solutions. With a background in Management Science and an analytical mindset, I specialize in the Dynamics 365 and Power Platform ecosystem, focusing on Out-of-the-Box (OOB) configurations to ensure long-term scalability and minimize technical debt.</p>
-            <p>My journey began at UCLouvain, followed by a transformative year in Latin America, which sharpened my adaptability and cross-cultural communication — skills I now apply when navigating diverse stakeholder requirements.</p>
-            <p>At Bancontact Payconiq Company, I currently lead the design of a centralized CRM architecture on Dynamics 365, with a strong focus on OOB-first configurations, Dataverse integrity, and scalable automation via Power Automate. Beyond delivery, I'm actively investing in the future of intelligent applications — pursuing certifications in Copilot Studio and AI Builder to stay at the forefront of agent-first design patterns.</p>
-          </div>
-          <div data-fr>
-            <p>Analyste Fonctionnel pragmatique, passionné par la transformation des défis métier complexes en solutions digitales performantes. Fort d'une formation en Sciences de Gestion et d'un esprit analytique, je me spécialise dans l'écosystème Dynamics 365 et Power Platform, avec un focus sur les configurations Out-of-the-Box (OOB) pour garantir la scalabilité à long terme et minimiser la dette technique.</p>
-            <p>Mon parcours a débuté à l'UCLouvain, suivi d'une année enrichissante en Amérique latine qui a renforcé mon adaptabilité et ma communication interculturelle — des compétences que j'applique au quotidien face à des interlocuteurs variés.</p>
-            <p>Chez Bancontact Payconiq Company, je pilote actuellement la conception d'une architecture CRM centralisée sur Dynamics 365, avec une attention particulière portée aux configurations OOB-first, à l'intégrité Dataverse et à l'automatisation via Power Automate. Au-delà de la delivery, j'investis activement dans l'avenir des applications intelligentes — en préparant des certifications Copilot Studio et AI Builder pour rester à la pointe des patterns agent-first.</p>
+    <!-- SUMMARY -->
+    <div>
+      <div class="section-label"><span class="section-label-text"><span data-en>Professional Summary</span><span data-fr>Résumé Professionnel</span></span></div>
+      <p class="summary-para">
+        <span data-en>CRM Functional Analyst with 3+ years of experience delivering Dynamics 365 &amp; Power Platform solutions in regulated industries (payments, public transport, financial services). Trusted bridge between business stakeholders and development teams — translating complex requirements into OOB-first architectures that scale and last.</span>
+        <span data-fr>Analyste Fonctionnel CRM avec 3+ ans d'expérience sur des projets Dynamics 365 &amp; Power Platform dans des secteurs réglementés (paiements, transport public, services financiers). Interface de confiance entre les parties prenantes métier et les équipes de développement — traduction d'exigences complexes en architectures OOB-first scalables et pérennes.</span>
+      </p>
+      <ul class="summary-bullets">
+        <li data-en><strong>Functional Design &amp; Architecture:</strong> OOB-first D365 CE, Dataverse modelling, end-to-end CRM lifecycle</li>
+        <li data-fr><strong>Conception Fonctionnelle :</strong> D365 CE OOB-first, modélisation Dataverse, cycle de vie CRM complet</li>
+        <li data-en><strong>Process Automation:</strong> Power Automate flows, KYC &amp; compliance workflows, onboarding automation</li>
+        <li data-fr><strong>Automatisation :</strong> Flows Power Automate, workflows KYC &amp; conformité, automatisation onboarding</li>
+        <li data-en><strong>Delivery &amp; Backlog:</strong> Agile User Stories, sprint planning, UAT, release management</li>
+        <li data-fr><strong>Delivery &amp; Backlog :</strong> User Stories Agile, sprint planning, UAT, gestion des releases</li>
+        <li data-en><strong>Emerging:</strong> Copilot Studio agent design, AI Builder — pursuing AB-410</li>
+        <li data-fr><strong>En développement :</strong> Copilot Studio, AI Builder — certification AB-410 en cours</li>
+      </ul>
+    </div>
+
+    <!-- SKILLS -->
+    <div>
+      <div class="section-label"><span class="section-label-text"><span data-en>Core Skills</span><span data-fr>Compétences Clés</span></span></div>
+      <div class="skills-grid">
+        <div class="skill-row">
+          <span class="skill-category"><span data-en>CRM &amp; Platform</span><span data-fr>CRM &amp; Plateforme</span></span>
+          <div class="skill-pills">
+            <span class="pill primary">Dynamics 365 CE</span>
+            <span class="pill primary">Power Automate</span>
+            <span class="pill primary">Dataverse</span>
+            <span class="pill primary">Copilot Studio</span>
+            <span class="pill primary">Power Platform</span>
+            <span class="pill">PowerApps</span>
+            <span class="pill">Customer Insights</span>
+            <span class="pill">Power Pages</span>
           </div>
         </div>
-      </div>
-
-      <!-- EXPERIENCE -->
-      <div class="section">
-        <div class="section-label" data-en>Experience</div>
-        <div class="section-label" data-fr>Expérience</div>
-
-        <!-- ORANGE BUSINESS -->
-        <div class="job">
-          <div class="job-header">
-            <div class="job-title">
-              <span data-en>CRM Functional Analyst — Consultant</span>
-              <span data-fr>Analyste Fonctionnel CRM — Consultant</span>
-            </div>
-            <div class="job-period">
-              <span data-en>Mar 2023 – Present</span>
-              <span data-fr>Mars 2023 – Aujourd'hui</span>
-            </div>
-          </div>
-          <div class="job-company">
-            <span data-en>Orange Business · Permanent Contract · Brussels, Hybrid</span>
-            <span data-fr>Orange Business · CDI · Bruxelles, Hybride</span>
-          </div>
-          <ul class="job-bullets">
-            <li data-en>Deployed as a CRM consultant on client missions within the Microsoft Dynamics 365 &amp; Power Platform ecosystem, covering functional design, process automation, and stakeholder management.</li>
-            <li data-fr>Déployé en tant que consultant CRM sur des missions clients dans l'écosystème Microsoft Dynamics 365 &amp; Power Platform, couvrant la conception fonctionnelle, l'automatisation des processus et la gestion des parties prenantes.</li>
-          </ul>
-
-          <!-- MISSION BPC -->
-          <div class="mission">
-            <div class="mission-header">
-              <span class="mission-client">Mission @ Bancontact Payconiq Company</span>
-              <span class="job-period">
-                <span data-en>Aug 2025 – Present</span>
-                <span data-fr>Août 2025 – Aujourd'hui</span>
-              </span>
-            </div>
-            <ul class="job-bullets">
-              <li data-en><strong>Functional Design:</strong> Leading the architecture of a centralized CRM on Dynamics 365 Customer Service, standardizing merchant data structures within Dataverse and driving OOB-first design decisions to reduce technical debt.</li>
-              <li data-fr><strong>Conception Fonctionnelle :</strong> Pilotage de l'architecture d'un CRM centralisé sur Dynamics 365 Customer Service, standardisation des structures de données marchands dans Dataverse et promotion des décisions de conception OOB-first pour réduire la dette technique.</li>
-              <li data-en><strong>Requirement Engineering:</strong> Translating complex business needs into structured User Stories, managing the product backlog, and bridging the gap between business stakeholders and development teams.</li>
-              <li data-fr><strong>Ingénierie des Exigences :</strong> Traduction des besoins métier complexes en User Stories structurées, gestion du backlog produit et rôle de pont entre les parties prenantes métier et les équipes de développement.</li>
-              <li data-en><strong>Process Automation:</strong> Designing and implementing Power Automate flows to replace legacy manual processes, including KYC notification workflows and merchant onboarding automation.</li>
-              <li data-fr><strong>Automatisation des Processus :</strong> Conception et implémentation de flows Power Automate pour remplacer les processus manuels, notamment les workflows de notification KYC et l'automatisation de l'onboarding marchand.</li>
-              <li data-en><strong>Compliance &amp; Governance:</strong> Supporting merchant periodic review processes and contributing to CRM compliance workflows aligned with regulatory requirements.</li>
-              <li data-fr><strong>Conformité &amp; Gouvernance :</strong> Support des processus de revue périodique des marchands et contribution aux workflows de conformité CRM alignés sur les exigences réglementaires.</li>
-            </ul>
-            <span class="job-tag">D365 Customer Service · Power Automate · Dataverse · Copilot Studio</span>
-          </div>
-
-          <!-- MISSION TEC -->
-          <div class="mission">
-            <div class="mission-header">
-              <span class="mission-client">Mission @ Le TEC</span>
-              <span class="job-period">
-                <span data-en>Mar 2023 – Aug 2025</span>
-                <span data-fr>Mars 2023 – Août 2025</span>
-              </span>
-            </div>
-            <ul class="job-bullets">
-              <li data-en><strong>Service Lead:</strong> Acted as the primary point of contact for the Service Center, owning bug triage, feature assessments, and monthly release cycle coordination between business and IT.</li>
-              <li data-fr><strong>Service Lead :</strong> Point de contact principal du Service Center, en charge du triage des bugs, des évaluations de features et de la coordination des cycles de release mensuels entre le métier et l'IT.</li>
-              <li data-en><strong>Marketing Automation:</strong> Defined and refined functional requirements for Customer Insights - Journeys campaigns, aligning technical capabilities with passenger engagement objectives.</li>
-              <li data-fr><strong>Marketing Automation :</strong> Définition et affinage des exigences fonctionnelles pour les campagnes Customer Insights - Journeys, en alignant les capacités techniques avec les objectifs d'engagement passager.</li>
-              <li data-en><strong>Quality Assurance:</strong> Led functional testing and UAT phases across CRM evolutions, ensuring system stability, data integrity, and end-user adoption.</li>
-              <li data-fr><strong>Assurance Qualité :</strong> Pilotage des phases de tests fonctionnels et UAT sur les évolutions CRM, garantissant la stabilité du système, l'intégrité des données et l'adoption par les utilisateurs.</li>
-              <li data-en><strong>Documentation:</strong> Maintained functional specifications and contributed to knowledge base articles to support team continuity and onboarding.</li>
-              <li data-fr><strong>Documentation :</strong> Maintenance des spécifications fonctionnelles et contribution aux articles de base de connaissance pour assurer la continuité et l'onboarding de l'équipe.</li>
-            </ul>
-            <span class="job-tag">D365 Customer Insights · Power Automate · PowerApps · UAT</span>
+        <div class="skill-row">
+          <span class="skill-category"><span data-en>Functional</span><span data-fr>Fonctionnel</span></span>
+          <div class="skill-pills">
+            <span class="pill primary"><span data-en>Business Analysis</span><span data-fr>Analyse Métier</span></span>
+            <span class="pill primary">User Stories</span>
+            <span class="pill primary">UAT</span>
+            <span class="pill"><span data-en>Backlog Management</span><span data-fr>Gestion Backlog</span></span>
+            <span class="pill"><span data-en>Functional Design</span><span data-fr>Conception Fonctionnelle</span></span>
+            <span class="pill"><span data-en>Requirements Engineering</span><span data-fr>Ingénierie Exigences</span></span>
           </div>
         </div>
-
-        <!-- BUSINESS & DECISION -->
-        <div class="job">
-          <div class="job-header">
-            <div class="job-title">
-              <span data-en>Business Analyst — Consultant</span>
-              <span data-fr>Business Analyst — Consultant</span>
-            </div>
-            <div class="job-period">
-              <span data-en>Sep 2022 – Nov 2023</span>
-              <span data-fr>Sept 2022 – Nov 2023</span>
-            </div>
-          </div>
-          <div class="job-company">
-            <span data-en>Business &amp; Decision · Permanent Contract · Brussels</span>
-            <span data-fr>Business &amp; Decision · CDI · Bruxelles</span>
-          </div>
-          <ul class="job-bullets">
-            <li data-en>Deployed as a consultant across multiple client missions, delivering business analysis, low-code development, and CRM implementation in diverse sectors including public, finance, and international organisations.</li>
-            <li data-fr>Déployé en tant que consultant sur plusieurs missions clients, avec des livrables en analyse métier, développement low-code et implémentation CRM dans des secteurs variés : public, finance et organisations internationales.</li>
-          </ul>
-
-          <!-- MISSION WEF -->
-          <div class="mission">
-            <div class="mission-header">
-              <span class="mission-client">Mission @ World Economic Forum</span>
-              <span class="job-period">
-                <span data-en>Apr 2023 – Jun 2023 · Remote</span>
-                <span data-fr>Avr 2023 – Juin 2023 · À distance</span>
-              </span>
-            </div>
-            <ul class="job-bullets">
-              <li data-en><strong>Data Migration:</strong> Led the migration of Tableau dashboards from on-premise environments to Tableau Cloud, ensuring data accuracy and visual consistency.</li>
-              <li data-fr><strong>Migration de Données :</strong> Pilotage de la migration de dashboards Tableau depuis des environnements on-premise vers Tableau Cloud, en garantissant la précision des données et la cohérence visuelle.</li>
-              <li data-en><strong>Testing &amp; Validation:</strong> Conducted thorough testing of each dashboard to guarantee seamless migration of all data sources and visualizations.</li>
-              <li data-fr><strong>Tests &amp; Validation :</strong> Tests approfondis de chaque dashboard pour garantir une migration sans rupture de toutes les sources de données et visualisations.</li>
-              <li data-en><strong>Documentation:</strong> Produced comprehensive migration documentation covering functionalities, data sources, and post-migration adjustments for end users.</li>
-              <li data-fr><strong>Documentation :</strong> Rédaction d'une documentation de migration complète couvrant les fonctionnalités, les sources de données et les ajustements post-migration pour les utilisateurs finaux.</li>
-            </ul>
-            <span class="job-tag">Tableau · Data Migration · BI</span>
-          </div>
-
-          <!-- MISSION ETNIC -->
-          <div class="mission">
-            <div class="mission-header">
-              <span class="mission-client">Mission @ ETNIC — Fédération Wallonie-Bruxelles</span>
-              <span class="job-period">
-                <span data-en>Jan 2023 – Mar 2023</span>
-                <span data-fr>Janv 2023 – Mars 2023</span>
-              </span>
-            </div>
-            <ul class="job-bullets">
-              <li data-en><strong>Low-Code Development:</strong> Built a Power Pages and Power Apps solution to streamline IT asset management and hardware replacement tracking.</li>
-              <li data-fr><strong>Développement Low-Code :</strong> Conception d'une solution Power Pages et Power Apps pour optimiser la gestion des actifs IT et le suivi du remplacement du matériel.</li>
-              <li data-en><strong>UX Design:</strong> Designed intuitive interfaces to simplify tracking of outdated hardware for non-technical staff.</li>
-              <li data-fr><strong>Design UX :</strong> Conception d'interfaces intuitives pour simplifier le suivi du matériel obsolète auprès des équipes non techniques.</li>
-              <li data-en><strong>Agile Coordination:</strong> Facilitated daily stand-ups to align business and technical teams on progress and priorities.</li>
-              <li data-fr><strong>Coordination Agile :</strong> Animation des stand-ups quotidiens pour aligner les équipes métier et techniques sur l'avancement et les priorités.</li>
-            </ul>
-            <span class="job-tag">Power Pages · PowerApps · Agile</span>
-          </div>
-
-          <!-- MISSION BELFIUS -->
-          <div class="mission">
-            <div class="mission-header">
-              <span class="mission-client">Mission @ Belfius</span>
-              <span class="job-period">
-                <span data-en>Dec 2022 – Feb 2023</span>
-                <span data-fr>Déc 2022 – Févr 2023</span>
-              </span>
-            </div>
-            <ul class="job-bullets">
-              <li data-en><strong>Chatbot Optimization:</strong> Enhanced the internal Genesys DX chatbot ecosystem by analyzing interaction logs to identify gaps in understanding and response accuracy.</li>
-              <li data-fr><strong>Optimisation Chatbot :</strong> Amélioration de l'écosystème chatbot interne Genesys DX par l'analyse des logs d'interaction pour identifier les lacunes de compréhension et de précision des réponses.</li>
-              <li data-en><strong>Feature Development:</strong> Collaborated with the development team to implement new features and refine conversational flows based on user feedback.</li>
-              <li data-fr><strong>Développement de Features :</strong> Collaboration avec l'équipe de développement pour implémenter de nouvelles fonctionnalités et affiner les flows conversationnels sur base des retours utilisateurs.</li>
-            </ul>
-            <span class="job-tag">Genesys DX · Chatbot · Business Analysis</span>
+        <div class="skill-row">
+          <span class="skill-category"><span data-en>Tools</span><span data-fr>Outils</span></span>
+          <div class="skill-pills">
+            <span class="pill">Jira</span>
+            <span class="pill">Confluence</span>
+            <span class="pill">Azure DevOps</span>
+            <span class="pill">XrmToolBox</span>
+            <span class="pill">Agile / Scrum</span>
           </div>
         </div>
-
-        <!-- INTERN -->
-        <div class="job">
-          <div class="job-header">
-            <div class="job-title">
-              <span data-en>Data Analyst Intern</span>
-              <span data-fr>Stagiaire Analyste de Données</span>
-            </div>
-            <div class="job-period">
-              <span data-en>Feb 2021 – Jun 2021</span>
-              <span data-fr>Févr 2021 – Juin 2021</span>
-            </div>
-          </div>
-          <div class="job-company">Baland, Apelmaen en Co · Brussels</div>
-          <ul class="job-bullets">
-            <li data-en>Assisted in the preparation of year-end financial statements and regulatory reporting for client portfolios.</li>
-            <li data-fr>Assistance à la préparation des états financiers de fin d'année et au reporting réglementaire pour les portefeuilles clients.</li>
-            <li data-en>Conducted market research and analyzed financial indicators to support client decision-making.</li>
-            <li data-fr>Réalisation d'études de marché et analyse d'indicateurs financiers pour soutenir la prise de décision des clients.</li>
-          </ul>
-        </div>
-
       </div>
     </div>
 
-    <!-- SIDEBAR -->
-    <div class="sidebar">
+    <!-- EXPERIENCE -->
+    <div>
+      <div class="section-label"><span class="section-label-text"><span data-en>Experience</span><span data-fr>Expérience</span></span></div>
 
-      <!-- SKILLS -->
-      <div class="sidebar-section">
-        <div class="section-label" data-en>Core Skills</div>
-        <div class="section-label" data-fr>Compétences</div>
-        <div class="skill-group">
-          <div class="skill-group-name">CRM &amp; Platform</div>
-          <div class="skill-tags">
-            <span class="skill-tag primary">Dynamics 365 CE</span>
-            <span class="skill-tag primary">Power Platform</span>
-            <span class="skill-tag primary">Dataverse</span>
-            <span class="skill-tag primary">Power Automate</span>
-            <span class="skill-tag primary">Copilot Studio</span>
-            <span class="skill-tag">PowerApps</span>
-            <span class="skill-tag">Power Pages</span>
-            <span class="skill-tag">Customer Insights</span>
+      <!-- ORANGE BUSINESS -->
+      <div class="job">
+        <div class="job-header">
+          <div class="job-title"><span data-en>CRM Functional Analyst — Consultant</span><span data-fr>Analyste Fonctionnel CRM — Consultant</span></div>
+          <div class="job-period"><span data-en>Mar 2023 – Present · Brussels, Hybrid</span><span data-fr>Mars 2023 – Aujourd'hui · Bruxelles, Hybride</span></div>
+        </div>
+        <div class="job-company"><span data-en>Orange Business · Permanent Contract</span><span data-fr>Orange Business · CDI</span></div>
+        <p class="job-scope">
+          <span data-en>Deployed as a CRM consultant on long-term client missions within the Microsoft Dynamics 365 &amp; Power Platform ecosystem. Responsible for end-to-end functional delivery: architecture design, requirement engineering, process automation, UAT coordination, and stakeholder management.</span>
+          <span data-fr>Déployé en tant que consultant CRM sur des missions clients longue durée dans l'écosystème Microsoft Dynamics 365 &amp; Power Platform. Responsable de la delivery fonctionnelle de bout en bout : conception d'architecture, ingénierie des exigences, automatisation des processus, coordination UAT et gestion des parties prenantes.</span>
+        </p>
+
+        <div class="mission">
+          <div class="mission-header">
+            <span class="mission-client">Mission @ Bancontact Payconiq Company</span>
+            <span class="job-period"><span data-en>Aug 2025 – Present</span><span data-fr>Août 2025 – Aujourd'hui</span></span>
           </div>
+          <p class="mission-scope">
+            <span data-en>Leading functional design of a centralized D365 Customer Service CRM for Belgium's leading payment network, covering 70,000+ merchants.</span>
+            <span data-fr>Pilotage de la conception fonctionnelle d'un CRM D365 Customer Service centralisé pour le principal réseau de paiement belge, couvrant 70 000+ marchands.</span>
+          </p>
+          <ul class="job-bullets">
+            <li data-en>Architected centralized CRM data model in Dataverse for <strong>70,000+ merchants</strong>, enforcing OOB-first design to eliminate customization debt before first release.</li>
+            <li data-fr>Conception de l'architecture du modèle de données CRM dans Dataverse pour <strong>70 000+ marchands</strong>, avec approche OOB-first pour éliminer la dette de personnalisation avant la première release.</li>
+            <li data-en>Delivered <strong>~15 Power Automate flows</strong> replacing manual merchant processes, including multilingual KYC notification workflows and end-to-end onboarding automation.</li>
+            <li data-fr>Livraison de <strong>~15 flows Power Automate</strong> remplaçant les processus marchands manuels, dont des workflows de notification KYC multilingues et l'automatisation complète de l'onboarding.</li>
+            <li data-en>Managed a backlog of <strong>~15 User Stories per sprint</strong> (3–4 weeks), translating KYC and regulatory requirements into structured, developer-ready functional specs.</li>
+            <li data-fr>Gestion d'un backlog de <strong>~15 User Stories par sprint</strong> (3–4 semaines), traduction des exigences KYC et réglementaires en spécifications fonctionnelles structurées prêtes pour les développeurs.</li>
+          </ul>
         </div>
-        <div class="skill-group">
-          <div class="skill-group-name" data-en>Functional</div>
-          <div class="skill-group-name" data-fr>Fonctionnel</div>
-          <div class="skill-tags">
-            <span class="skill-tag primary">Business Analysis</span>
-            <span class="skill-tag primary">User Stories</span>
-            <span class="skill-tag" data-en>Backlog Management</span>
-            <span class="skill-tag" data-fr>Gestion de Backlog</span>
-            <span class="skill-tag">UAT</span>
-            <span class="skill-tag" data-en>Functional Design</span>
-            <span class="skill-tag" data-fr>Conception Fonctionnelle</span>
-            <span class="skill-tag" data-en>Process Automation</span>
-            <span class="skill-tag" data-fr>Automatisation</span>
-            <span class="skill-tag" data-en>Requirements Engineering</span>
-            <span class="skill-tag" data-fr>Ingénierie des Exigences</span>
+
+        <div class="mission">
+          <div class="mission-header">
+            <span class="mission-client">Mission @ Le TEC</span>
+            <span class="job-period"><span data-en>Mar 2023 – Aug 2025</span><span data-fr>Mars 2023 – Août 2025</span></span>
           </div>
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-name" data-en>Tools &amp; Methods</div>
-          <div class="skill-group-name" data-fr>Outils &amp; Méthodes</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Jira</span>
-            <span class="skill-tag">Confluence</span>
-            <span class="skill-tag">Azure DevOps</span>
-            <span class="skill-tag">XrmToolBox</span>
-            <span class="skill-tag">Agile / Scrum</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- CERTIFICATIONS -->
-      <div class="sidebar-section">
-        <div class="section-label" data-en>Certifications</div>
-        <div class="section-label" data-fr>Certifications</div>
-        <div class="cert-item">
-          <div class="cert-name">Power Platform Functional Consultant Associate (PL-200)</div>
-          <div class="cert-meta" data-en>Microsoft · Dec 2025</div>
-          <div class="cert-meta" data-fr>Microsoft · Déc 2025</div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-name">Power Platform Fundamentals (PL-900)</div>
-          <div class="cert-meta" data-en>Microsoft · Nov 2023</div>
-          <div class="cert-meta" data-fr>Microsoft · Nov 2023</div>
+          <p class="mission-scope">
+            <span data-en>Service Lead and primary IT/business liaison for the CRM platform of Wallonia's public transport operator, supporting 40 end users.</span>
+            <span data-fr>Service Lead et interface principale IT/métier pour la plateforme CRM de l'opérateur de transport public wallon, en support de 40 utilisateurs finaux.</span>
+          </p>
+          <ul class="job-bullets">
+            <li data-en>Owned monthly release cycles end-to-end — bug triage, feature assessment, UAT coordination — ensuring zero critical regressions across <strong>2+ years</strong> of continuous delivery.</li>
+            <li data-fr>Ownership des cycles de release mensuels de bout en bout — garantissant l'absence de régressions critiques sur <strong>2+ ans</strong> de delivery continue.</li>
+            <li data-en>Defined functional requirements for Customer Insights - Journeys campaigns, enabling marketing automation across passenger engagement channels and eliminating manual campaign coordination.</li>
+            <li data-fr>Définition des exigences fonctionnelles pour les campagnes Customer Insights - Journeys, permettant l'automatisation marketing et éliminant la coordination manuelle des campagnes.</li>
+            <li data-en>Maintained full functional documentation library, reducing onboarding time for new team members and ensuring continuity across release cycles.</li>
+            <li data-fr>Maintenance d'une bibliothèque de documentation fonctionnelle complète, réduisant le temps d'onboarding et assurant la continuité entre les cycles de release.</li>
+          </ul>
         </div>
       </div>
 
-      <!-- EDUCATION -->
-      <div class="sidebar-section">
-        <div class="section-label" data-en>Education</div>
-        <div class="section-label" data-fr>Formation</div>
-        <div class="edu-item">
-          <div class="edu-degree" data-en>Master's in Finance</div>
-          <div class="edu-degree" data-fr>Master en Finance</div>
-          <div class="edu-school">Louvain School of Management</div>
-          <div class="edu-period">2019 – 2021</div>
-          <div class="edu-detail" data-en>Corporate Finance · International Finance</div>
-          <div class="edu-detail" data-fr>Finance d'Entreprise · Finance Internationale</div>
-        </div>
-        <div class="edu-item">
-          <div class="edu-degree" data-en>Bachelor's in Economy &amp; Management</div>
-          <div class="edu-degree" data-fr>Bachelier en Économie &amp; Gestion</div>
-          <div class="edu-school">UCLouvain</div>
-          <div class="edu-period">2015 – 2019</div>
-          <div class="edu-detail" data-en>Minor in Management</div>
-          <div class="edu-detail" data-fr>Mineure en Gestion</div>
-        </div>
-      </div>
+      <hr class="job-divider">
 
-      <!-- LANGUAGES -->
-      <div class="sidebar-section">
-        <div class="section-label" data-en>Languages</div>
-        <div class="section-label" data-fr>Langues</div>
-        <div class="lang-item">
-          <span class="lang-name" data-en>French</span>
-          <span class="lang-name" data-fr>Français</span>
-          <span class="lang-level" data-en>Native</span>
-          <span class="lang-level" data-fr>Langue maternelle</span>
+      <!-- BUSINESS & DECISION -->
+      <div class="job">
+        <div class="job-header">
+          <div class="job-title"><span data-en>Business Analyst — Consultant</span><span data-fr>Business Analyst — Consultant</span></div>
+          <div class="job-period"><span data-en>Sep 2022 – Feb 2023 · Brussels</span><span data-fr>Sept 2022 – Févr 2023 · Bruxelles</span></div>
         </div>
-        <div class="lang-item">
-          <span class="lang-name" data-en>English</span>
-          <span class="lang-name" data-fr>Anglais</span>
-          <span class="lang-level" data-en>Fluent</span>
-          <span class="lang-level" data-fr>Courant</span>
-        </div>
-        <div class="lang-item">
-          <span class="lang-name" data-en>Dutch</span>
-          <span class="lang-name" data-fr>Néerlandais</span>
-          <span class="lang-level" data-en>Notions</span>
-          <span class="lang-level" data-fr>Notions</span>
-        </div>
+        <div class="job-company"><span data-en>Business &amp; Decision · Permanent Contract</span><span data-fr>Business &amp; Decision · CDI</span></div>
+        <p class="job-scope">
+          <span data-en>Delivered business analysis and low-code development across three client missions in public administration, financial services, and international organizations.</span>
+          <span data-fr>Livraison d'analyses métier et développements low-code sur trois missions clients dans l'administration publique, les services financiers et les organisations internationales.</span>
+        </p>
+        <ul class="job-bullets">
+          <li data-en>Migrated <strong>15 Tableau dashboards</strong> from on-premise to Tableau Cloud for the World Economic Forum, delivering full testing, validation, and documentation within a 3-month remote engagement.</li>
+          <li data-fr>Migration de <strong>15 dashboards Tableau</strong> vers Tableau Cloud pour le World Economic Forum, avec tests complets et documentation dans un engagement à distance de 3 mois.</li>
+          <li data-en>Built a Power Pages &amp; PowerApps solution for ETNIC, digitizing IT asset tracking workflows and eliminating manual spreadsheet-based processes for non-technical staff.</li>
+          <li data-fr>Développement d'une solution Power Pages &amp; PowerApps pour l'ETNIC, digitalisant les workflows de suivi des actifs IT et éliminant les processus manuels basés sur des tableurs.</li>
+          <li data-en>Improved Genesys DX chatbot response accuracy at Belfius by analyzing interaction logs and collaborating with dev teams on targeted conversational flow improvements.</li>
+          <li data-fr>Amélioration de la précision du chatbot Genesys DX chez Belfius par l'analyse des logs d'interaction et la collaboration avec les équipes de développement.</li>
+        </ul>
       </div>
-
-      <!-- VOLUNTEERING -->
-      <div class="sidebar-section">
-        <div class="section-label" data-en>Volunteering</div>
-        <div class="section-label" data-fr>Bénévolat</div>
-        <div class="edu-item">
-          <div class="edu-degree" data-en>Project Coordinator</div>
-          <div class="edu-degree" data-fr>Coordinateur de Projet</div>
-          <div class="edu-school">Cocoa Farm — Medina, Colombia</div>
-          <div class="edu-period" data-en>Feb – Mar 2022</div>
-          <div class="edu-period" data-fr>Févr – Mars 2022</div>
-          <div class="edu-detail" data-en>Sustainability initiatives, cross-cultural coaching in a high-autonomy environment.</div>
-          <div class="edu-detail" data-fr>Initiatives de durabilité, coaching interculturel dans un environnement à haute autonomie.</div>
-        </div>
-      </div>
-
     </div>
+
+    <!-- ADDITIONAL EXPERIENCE -->
+    <div>
+      <div class="section-label"><span class="section-label-text"><span data-en>Additional Experience</span><span data-fr>Expérience Complémentaire</span></span></div>
+      <div class="addl-list">
+        <div class="addl-item">
+          <div class="addl-left">
+            <span class="addl-title"><span data-en>Data Analyst Intern</span><span data-fr>Stagiaire Analyste de Données</span></span>
+            <span> · Baland, Apelmaen en Co · </span>
+            <span data-en>Financial reporting &amp; market research in an accounting context.</span>
+            <span data-fr>Reporting financier &amp; études de marché en contexte comptable.</span>
+          </div>
+          <span class="addl-period"><span data-en>Feb – Jun 2021</span><span data-fr>Févr – Juin 2021</span></span>
+        </div>
+        <div class="addl-item">
+          <div class="addl-left">
+            <span class="addl-title"><span data-en>Project Coordinator (Volunteer)</span><span data-fr>Coordinateur de Projet (Bénévole)</span></span>
+            <span> · Cocoa Farm, Colombia · </span>
+            <span data-en>Sustainability &amp; cross-cultural coaching in a high-autonomy environment.</span>
+            <span data-fr>Durabilité &amp; coaching interculturel dans un environnement à haute autonomie.</span>
+          </div>
+          <span class="addl-period"><span data-en>Feb – Mar 2022</span><span data-fr>Févr – Mars 2022</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CERTS + EDU -->
+    <div class="two-col">
+      <div>
+        <div class="section-label"><span class="section-label-text"><span data-en>Certifications</span><span data-fr>Certifications</span></span></div>
+        <div class="cert-list">
+          <div class="cert-item">
+            <div class="cert-left">
+              <span class="cert-name">Power Platform Functional Consultant</span>
+              <span class="cert-badge">PL-200</span>
+            </div>
+            <span class="cert-meta"><span data-en>Dec 2025</span><span data-fr>Déc 2025</span></span>
+          </div>
+          <div class="cert-item">
+            <div class="cert-left">
+              <span class="cert-name">Power Platform Fundamentals</span>
+              <span class="cert-badge">PL-900</span>
+            </div>
+            <span class="cert-meta">Nov 2023</span>
+          </div>
+          <div class="cert-item">
+            <div class="cert-left">
+              <span class="cert-name">Microsoft AI Engineer Associate</span>
+              <span class="cert-badge">AB-410</span>
+            </div>
+            <span class="cert-inprogress"><span data-en>In progress</span><span data-fr>En cours</span></span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label"><span class="section-label-text"><span data-en>Education</span><span data-fr>Formation</span></span></div>
+        <div class="edu-list">
+          <div class="edu-item">
+            <div class="edu-degree"><span data-en>Master's in Finance</span><span data-fr>Master en Finance</span></div>
+            <div class="edu-school">Louvain School of Management · <span class="edu-period">2019 – 2021</span></div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-degree"><span data-en>Bachelor's in Economy &amp; Management</span><span data-fr>Bachelier en Économie &amp; Gestion</span></div>
+            <div class="edu-school">UCLouvain · <span class="edu-period">2015 – 2019</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LANGUAGES -->
+    <div>
+      <div class="section-label"><span class="section-label-text"><span data-en>Languages</span><span data-fr>Langues</span></span></div>
+      <div class="lang-list">
+        <div class="lang-item">
+          <span class="lang-name"><span data-en>French</span><span data-fr>Français</span></span>
+          <div class="lang-dots">
+            <span class="lang-dot filled"></span><span class="lang-dot filled"></span><span class="lang-dot filled"></span><span class="lang-dot filled"></span><span class="lang-dot filled"></span>
+          </div>
+          <span class="lang-label"><span data-en>Native</span><span data-fr>Langue maternelle</span></span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name"><span data-en>English</span><span data-fr>Anglais</span></span>
+          <div class="lang-dots">
+            <span class="lang-dot filled"></span><span class="lang-dot filled"></span><span class="lang-dot filled"></span><span class="lang-dot filled"></span><span class="lang-dot"></span>
+          </div>
+          <span class="lang-label"><span data-en>Fluent</span><span data-fr>Courant</span></span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name"><span data-en>Dutch</span><span data-fr>Néerlandais</span></span>
+          <div class="lang-dots">
+            <span class="lang-dot filled"></span><span class="lang-dot"></span><span class="lang-dot"></span><span class="lang-dot"></span><span class="lang-dot"></span>
+          </div>
+          <span class="lang-label"><span data-en>Notions</span><span data-fr>Notions</span></span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
