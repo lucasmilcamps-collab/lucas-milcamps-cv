@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucas Milcamps — CRM Functional Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a2e;
+    --mid: #4a4a6a;
+    --soft: #8888aa;
+    --accent: #2d6cdf;
+    --accent-light: #e8f0fd;
+    --rule: #e0e0ee;
+    --bg: #fafafa;
+    --white: #ffffff;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 40px auto;
+    background: var(--white);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.08);
+  }
+
+  /* HEADER */
+  .header {
+    padding: 48px 56px 40px;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: end;
+  }
+
+  .header-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .header-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+  }
+
+  .header-tagline {
+    font-size: 13px;
+    color: var(--mid);
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  .header-contact {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .contact-item {
+    font-size: 12.5px;
+    color: var(--mid);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .contact-item a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .contact-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* BODY LAYOUT */
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+  }
+
+  .main {
+    padding: 40px 48px 48px 56px;
+    border-right: 1px solid var(--rule);
+  }
+
+  .sidebar {
+    padding: 40px 36px 48px;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section:last-child {
+    margin-bottom: 0;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--soft);
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* EXPERIENCE */
+  .job {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .job:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .job-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .job-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .job-period {
+    font-size: 11.5px;
+    color: var(--soft);
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  .job-company {
+    font-size: 12.5px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .job-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .job-bullets li {
+    font-size: 12.5px;
+    color: var(--mid);
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .job-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .job-tag {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 2px 8px;
+    border-radius: 3px;
+  }
+
+  /* SIDEBAR SECTIONS */
+  .sidebar-section {
+    margin-bottom: 32px;
+  }
+
+  .sidebar-section:last-child {
+    margin-bottom: 0;
+  }
+
+  .sidebar .section-label {
+    font-size: 10px;
+  }
+
+  /* ABOUT */
+  .about-text {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.75;
+  }
+
+  .about-text p + p {
+    margin-top: 12px;
+  }
+
+  /* SKILLS */
+  .skill-group {
+    margin-bottom: 16px;
+  }
+
+  .skill-group-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .skill-tag {
+    font-size: 11px;
+    color: var(--mid);
+    background: #f2f2f8;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 400;
+  }
+
+  .skill-tag.primary {
+    color: var(--accent);
+    background: var(--accent-light);
+    font-weight: 500;
+  }
+
+  /* EDUCATION */
+  .edu-item {
+    margin-bottom: 16px;
+  }
+
+  .edu-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .edu-degree {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .edu-school {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-top: 1px;
+  }
+
+  .edu-period {
+    font-size: 11px;
+    color: var(--soft);
+    margin-top: 2px;
+  }
+
+  .edu-detail {
+    font-size: 11.5px;
+    color: var(--mid);
+    margin-top: 3px;
+  }
+
+  /* CERTIFICATIONS */
+  .cert-item {
+    margin-bottom: 12px;
+    padding-left: 10px;
+    border-left: 2px solid var(--accent);
+  }
+
+  .cert-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .cert-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .cert-meta {
+    font-size: 11px;
+    color: var(--soft);
+    margin-top: 1px;
+  }
+
+  /* LANGUAGES */
+  .lang-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .lang-name {
+    font-size: 12.5px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .lang-level {
+    font-size: 11px;
+    color: var(--soft);
+  }
+
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; margin: 0; max-width: 100%; }
+  }
+
+  @media (max-width: 700px) {
+    .body { grid-template-columns: 1fr; }
+    .main { border-right: none; border-bottom: 1px solid var(--rule); padding: 32px 24px; }
+    .sidebar { padding: 32px 24px; }
+    .header { grid-template-columns: 1fr; padding: 32px 24px; }
+    .header-contact { text-align: left; }
+    .contact-item { justify-content: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="header-name">Lucas Milcamps</div>
+      <div class="header-title">CRM Functional Analyst · Dynamics 365 & Power Platform Specialist</div>
+      <div class="header-tagline">Pragmatic consultant translating complex business challenges into scalable digital solutions — with a focus on OOB-first Dynamics 365 configurations, Dataverse integrity, and intelligent process automation.</div>
+    </div>
+    <div class="header-contact">
+      <div class="contact-item"><span class="contact-dot"></span> Brussels, Belgium</div>
+      <div class="contact-item"><span class="contact-dot"></span> <a href="https://linkedin.com/in/lucas-milcamps">linkedin.com/in/lucas-milcamps</a></div>
+      <div class="contact-item"><span class="contact-dot"></span> Available on request</div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- MAIN COLUMN -->
+    <div class="main">
+
+      <!-- ABOUT -->
+      <div class="section">
+        <div class="section-label">Profile</div>
+        <div class="about-text">
+          <p>I am a pragmatic Functional Analyst with a passion for translating complex business challenges into high-performing digital solutions. With a background in Management Science and an analytical mindset, I specialize in the Dynamics 365 and Power Platform ecosystem, focusing on Out-of-the-Box (OOB) configurations to ensure long-term scalability and minimize technical debt.</p>
+          <p>My journey began at UCLouvain, followed by a transformative year in Latin America, which sharpened my adaptability and cross-cultural communication — skills I now apply when navigating diverse stakeholder requirements.</p>
+          <p>At Bancontact Payconiq Company, I currently lead the design of a centralized CRM architecture on Dynamics 365, with a strong focus on OOB-first configurations, Dataverse integrity, and scalable automation via Power Automate. Beyond delivery, I'm actively investing in the future of intelligent applications — pursuing certifications in Copilot Studio and AI Builder to stay at the forefront of agent-first design patterns.</p>
+        </div>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <div class="section">
+        <div class="section-label">Experience</div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">CRM Functional Analyst — Bancontact Payconiq Company</div>
+            <div class="job-period">Aug 2025 – Present</div>
+          </div>
+          <div class="job-company">Orange Business · Brussels, Hybrid</div>
+          <ul class="job-bullets">
+            <li><strong>Functional Design:</strong> Leading the architecture of a centralized CRM on Dynamics 365 Customer Service, standardizing merchant data structures within Dataverse and driving OOB-first design decisions to reduce technical debt.</li>
+            <li><strong>Requirement Engineering:</strong> Translating complex business needs into structured User Stories, managing the product backlog, and bridging the gap between business stakeholders and development teams.</li>
+            <li><strong>Process Automation:</strong> Designing and implementing Power Automate flows to replace legacy manual processes, including KYC notification workflows and merchant onboarding automation.</li>
+            <li><strong>Compliance & Governance:</strong> Supporting merchant periodic review processes and contributing to CRM compliance workflows aligned with regulatory requirements.</li>
+          </ul>
+          <span class="job-tag">D365 Customer Service · Power Automate · Dataverse · Copilot Studio</span>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">CRM Functional Analyst — Le TEC</div>
+            <div class="job-period">Mar 2023 – Aug 2025</div>
+          </div>
+          <div class="job-company">Orange Business · Brussels, Hybrid</div>
+          <ul class="job-bullets">
+            <li><strong>Service Lead:</strong> Acted as the primary point of contact for the Service Center, owning bug triage, feature assessments, and monthly release cycle coordination between business and IT.</li>
+            <li><strong>Marketing Automation:</strong> Defined and refined functional requirements for Customer Insights - Journeys campaigns, aligning technical capabilities with passenger engagement objectives.</li>
+            <li><strong>Quality Assurance:</strong> Led functional testing and UAT phases across CRM evolutions, ensuring system stability, data integrity, and end-user adoption.</li>
+            <li><strong>Documentation:</strong> Maintained functional specifications and contributed to knowledge base articles to support team continuity and onboarding.</li>
+          </ul>
+          <span class="job-tag">D365 Customer Insights · Power Automate · PowerApps · UAT</span>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Business Process Solutions Consultant</div>
+            <div class="job-period">Sep 2022 – Nov 2023</div>
+          </div>
+          <div class="job-company">Business & Decision · Brussels</div>
+          <ul class="job-bullets">
+            <li><strong>CRM Implementation:</strong> Delivered end-to-end Dynamics 365 configuration and customization projects, covering requirements gathering, solution design, and go-live support.</li>
+            <li><strong>Stakeholder Management:</strong> Facilitated workshops with business users to capture requirements and validate functional solutions across multiple client environments.</li>
+            <li><strong>Power Platform:</strong> Built low-code solutions using PowerApps and Power Automate to streamline client business processes and reduce manual workload.</li>
+          </ul>
+          <span class="job-tag">Dynamics 365 · PowerApps · Power Automate</span>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Data Analyst</div>
+            <div class="job-period">Apr 2023 – Jun 2023</div>
+          </div>
+          <div class="job-company">World Economic Forum · Remote</div>
+          <ul class="job-bullets">
+            <li><strong>Data Migration:</strong> Led the migration of Tableau dashboards from on-premise environments to Tableau Cloud, ensuring data accuracy and visual consistency.</li>
+            <li><strong>Testing & Validation:</strong> Conducted thorough testing of each dashboard to guarantee seamless migration of all data sources and visualizations.</li>
+            <li><strong>Documentation:</strong> Produced comprehensive migration documentation covering functionalities, data sources, and post-migration adjustments for end users.</li>
+          </ul>
+          <span class="job-tag">Tableau · Data Migration · BI</span>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Business Analyst — ETNIC</div>
+            <div class="job-period">Jan 2023 – Mar 2023</div>
+          </div>
+          <div class="job-company">Fédération Wallonie-Bruxelles · Brussels</div>
+          <ul class="job-bullets">
+            <li><strong>Low-Code Development:</strong> Built a Power Pages and Power Apps solution to streamline IT asset management and hardware replacement tracking.</li>
+            <li><strong>UX Design:</strong> Designed intuitive interfaces to simplify tracking of outdated hardware for non-technical staff.</li>
+            <li><strong>Agile Coordination:</strong> Facilitated daily stand-ups to align business and technical teams on progress and priorities.</li>
+          </ul>
+          <span class="job-tag">Power Pages · PowerApps · Agile</span>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Business Analyst — Belfius</div>
+            <div class="job-period">Dec 2022 – Feb 2023</div>
+          </div>
+          <div class="job-company">Business & Decision · Brussels, Hybrid</div>
+          <ul class="job-bullets">
+            <li><strong>Chatbot Optimization:</strong> Enhanced the internal Genesys DX chatbot ecosystem by analyzing interaction logs to identify gaps in understanding and response accuracy.</li>
+            <li><strong>Feature Development:</strong> Collaborated with the development team to implement new features and refine conversational flows based on user feedback.</li>
+          </ul>
+          <span class="job-tag">Genesys DX · Chatbot · Business Analysis</span>
+        </div>
+
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Data Analyst Intern</div>
+            <div class="job-period">Feb 2021 – Jun 2021</div>
+          </div>
+          <div class="job-company">Baland, Apelmaen en Co · Brussels</div>
+          <ul class="job-bullets">
+            <li>Assisted in the preparation of year-end financial statements and regulatory reporting for client portfolios.</li>
+            <li>Conducted market research and analyzed financial indicators to support client decision-making.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- SKILLS -->
+      <div class="sidebar-section">
+        <div class="section-label">Core Skills</div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">CRM & Platform</div>
+          <div class="skill-tags">
+            <span class="skill-tag primary">Dynamics 365 CE</span>
+            <span class="skill-tag primary">Power Platform</span>
+            <span class="skill-tag primary">Dataverse</span>
+            <span class="skill-tag primary">Power Automate</span>
+            <span class="skill-tag primary">Copilot Studio</span>
+            <span class="skill-tag">PowerApps</span>
+            <span class="skill-tag">Power Pages</span>
+            <span class="skill-tag">Customer Insights</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">Functional</div>
+          <div class="skill-tags">
+            <span class="skill-tag primary">Business Analysis</span>
+            <span class="skill-tag primary">User Stories</span>
+            <span class="skill-tag">Backlog Management</span>
+            <span class="skill-tag">UAT</span>
+            <span class="skill-tag">Functional Design</span>
+            <span class="skill-tag">Process Automation</span>
+            <span class="skill-tag">Requirements Engineering</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">Tools & Methods</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Jira</span>
+            <span class="skill-tag">Confluence</span>
+            <span class="skill-tag">Azure DevOps</span>
+            <span class="skill-tag">XrmToolBox</span>
+            <span class="skill-tag">Agile / Scrum</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CERTIFICATIONS -->
+      <div class="sidebar-section">
+        <div class="section-label">Certifications</div>
+
+        <div class="cert-item">
+          <div class="cert-name">Power Platform Functional Consultant Associate (PL-200)</div>
+          <div class="cert-meta">Microsoft · Dec 2025</div>
+        </div>
+
+        <div class="cert-item">
+          <div class="cert-name">Power Platform Fundamentals (PL-900)</div>
+          <div class="cert-meta">Microsoft · Nov 2023</div>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="sidebar-section">
+        <div class="section-label">Education</div>
+
+        <div class="edu-item">
+          <div class="edu-degree">Master's in Finance</div>
+          <div class="edu-school">Louvain School of Management</div>
+          <div class="edu-period">2019 – 2021</div>
+          <div class="edu-detail">Corporate Finance · International Finance</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-degree">Bachelor's in Economy & Management</div>
+          <div class="edu-school">UCLouvain</div>
+          <div class="edu-period">2015 – 2019</div>
+          <div class="edu-detail">Minor in Management</div>
+        </div>
+      </div>
+
+      <!-- LANGUAGES -->
+      <div class="sidebar-section">
+        <div class="section-label">Languages</div>
+        <div class="lang-item">
+          <span class="lang-name">French</span>
+          <span class="lang-level">Native</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">English</span>
+          <span class="lang-level">Fluent</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-name">Dutch</span>
+          <span class="lang-level">Notions</span>
+        </div>
+      </div>
+
+      <!-- VOLUNTEERING -->
+      <div class="sidebar-section">
+        <div class="section-label">Volunteering</div>
+        <div class="edu-item">
+          <div class="edu-degree">Project Coordinator</div>
+          <div class="edu-school">Cocoa Farm — Medina, Colombia</div>
+          <div class="edu-period">Feb – Mar 2022</div>
+          <div class="edu-detail">Sustainability initiatives, cross-cultural coaching in a high-autonomy environment.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
